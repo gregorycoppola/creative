@@ -42,6 +42,59 @@ P(A = a_1, B = b_1, C = c_1) = 0.4 \cdot 0.5 \cdot 0.3 = 0.06
 \]
 
 \subsection{Inference}
-\subsection{Parameter learning}
+Inference in Bayesian networks is the process of computing the posterior distribution of certain variables given evidence about other variables. This allows for probabilistic reasoning about the variables based on observed data. There are primarily two types of inference tasks: marginalization and conditional probability queries.
+
+\subsubsection{Types of Inference}
+\paragraph{Marginalization}
+Marginalization involves computing the probability distribution over a subset of variables, integrating out or summing over the other variables. This is useful when the interest lies in the overall behavior of a few variables without considering the entire network.
+
+\paragraph{Conditional Probability}
+Conditional probability queries, on the other hand, involve calculating the probabilities of certain outcomes given the known values of other variables. This is often expressed as \( P(X \mid e) \), where \( X \) is the query variable and \( e \) represents evidence, i.e., known values of other variables.
+
+\subsubsection{Methods for Inference}
+\paragraph{Exact Inference}
+Exact inference techniques, such as the junction tree algorithm, involve converting the Bayesian network into a tree structure where the inference can be performed efficiently. Although powerful, exact inference can be computationally prohibitive in large networks.
+
+\paragraph{Approximate Inference}
+Approximate inference methods are often used when exact inference is not feasible. Techniques such as Monte Carlo simulations, including Markov Chain Monte Carlo (MCMC) and Gibbs sampling, provide ways to estimate the distribution with a degree of uncertainty. Another popular method is loopy belief propagation, which uses message passing in networks with cycles, albeit without guarantees of convergence.
+
+\subsubsection{Applications of Inference}
+Inference in Bayesian networks is widely used in various fields such as genetics, where it helps in understanding the genetic disposition to diseases, in diagnostics, where it aids in deriving patient-specific probabilities of having certain conditions, and in machine learning, particularly in areas involving uncertainty and prediction.
+
+\subsubsection{Challenges in Inference}
+Despite its utility, Bayesian inference faces challenges, especially regarding scalability and computational efficiency. The complexity of the network and the interdependencies between variables can make inference computationally intensive, which requires innovative solutions for practical applications.
+
+In summary, inference is a fundamental aspect of Bayesian networks, enabling the extraction of meaningful insights from complex probabilistic models. As computational resources grow and techniques advance, the scope and accuracy of Bayesian inference continue to expand, making it an indispensable tool in the realm of probabilistic modeling and decision-making.
+
+\subsection{Bayesian Parameter Learning}
+Bayesian parameter learning refers to the process of updating the probabilistic models' parameters based on observed data, utilizing Bayes' theorem. This approach contrasts with frequentist methods by incorporating prior knowledge or beliefs about the parameters before observing the data. The goal is to compute the posterior distribution of the parameters, which combines prior beliefs with the likelihood of observing the data given those parameters.
+
+\subsubsection{Bayes' Theorem}
+The foundation of Bayesian learning is Bayes' theorem, which in the context of parameter learning, is expressed as:
+\[
+P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
+\]
+where \( \theta \) represents the parameters of the model, \( D \) is the observed data, \( P(\theta) \) is the prior distribution of the parameters, \( P(D \mid \theta) \) is the likelihood of the data given the parameters, and \( P(D) \) is the evidence or the probability of the data under all possible parameter values.
+
+\subsubsection{Choosing Priors}
+The choice of prior \( P(\theta) \) is critical in Bayesian learning. Priors can be:
+\begin{itemize}
+    \item \textbf{Informative priors}: These contain specific information about what values the parameters might take based on previous studies or expert knowledge.
+    \item \textbf{Non-informative priors}: These are designed to have minimal impact on the posterior distribution, often used when little prior knowledge is available.
+    \item \textbf{Conjugate priors}: These are selected because they lead to posterior distributions that are of the same family as the prior, simplifying the computation.
+\end{itemize}
+
+\subsubsection{Computational Techniques}
+Updating beliefs in light of new data typically requires integration over many possible parameter values, which can be computationally challenging. Common techniques used in Bayesian parameter learning include:
+\begin{itemize}
+    \item \textbf{Markov Chain Monte Carlo (MCMC)}: This is a class of algorithms that samples from the posterior distribution when direct sampling is complex.
+    \item \textbf{Variational Inference}: This method approximates the posterior by a simpler distribution by solving an optimization problem.
+\end{itemize}
+
+\subsubsection{Applications and Advantages}
+Bayesian parameter learning is widely used in fields where the stakes of decision-making are high, such as in clinical trials, finance, and policy modeling. The ability to update the model as new data arrives allows for more flexible and adaptive decision-making. Moreover, the incorporation of prior knowledge helps in situations where data might be scarce or expensive to obtain.
+
+In summary, Bayesian parameter learning offers a robust framework for understanding uncertainty in parameter estimates and making informed decisions based on both prior knowledge and new data. The flexibility in choosing prior models and the richness of the posterior analysis are key advantages of this approach over more traditional methods.
+
 \subsection{Structure Discovery}
 \subsection{Compared to Neural Networks}
