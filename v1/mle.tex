@@ -5,6 +5,74 @@ One of the central aspects of Ilya's talk is that he talks about the relationshi
 Just in general, we might observe that there are deep connections between the following concepts.
 
 \subsection{Maximum Likelihood Estimation}
+
+Maximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. The method is widely used to infer the parameters that best explain the observed data under a specified statistical model.
+
+\subsubsection{Principles of MLE}
+The likelihood function measures the probability of observing the given data as a function of the parameters of the model. In the case of MLE, the objective is to find the parameter values that maximize this likelihood function. Mathematically, the likelihood of a model parameter \( \theta \) given observations \( X \) is expressed as:
+\[
+L(\theta \mid X) = P(X \mid \theta)
+\]
+Where \( P(X \mid \theta) \) denotes the probability of observing \( X \) given the parameters \( \theta \).
+
+\subsubsection{The Maximization Process}
+To find the parameter values that maximize the likelihood function, one typically takes the logarithm of the likelihood, known as the log-likelihood, because it transforms the product of probabilities into a sum, simplifying the differentiation:
+\[
+\log L(\theta \mid X) = \log P(X \mid \theta)
+\]
+The parameters that maximize the log-likelihood are found by setting the derivative of the log-likelihood with respect to \( \theta \) to zero and solving for \( \theta \). This process is known as finding the maximum likelihood estimators (MLEs) of the parameters.
+
+\subsubsection{Properties of MLE}
+Maximum likelihood estimators have several desirable statistical properties:
+\begin{itemize}
+    \item \textbf{Consistency:} As the sample size increases, the MLE converges to the true parameter value.
+    \item \textbf{Efficiency:} MLEs achieve the lowest possible variance among all unbiased estimators, especially as the sample size grows large, known as being asymptotically efficient.
+    \item \textbf{Normality:} Under certain regularity conditions, the distribution of MLEs approaches a normal distribution as the sample size increases, which simplifies inference.
+\end{itemize}
+
+\subsubsection{Applications of MLE}
+Maximum likelihood estimation is used in various fields such as economics, epidemiology, finance, and more. It is particularly prevalent in machine learning, both in supervised and unsupervised learning scenarios, where the likelihood can be used to train models like logistic regression, generalized linear models, and more complex structures where parameters are not directly observable.
+
+In summary, maximum likelihood estimation is a cornerstone of statistical inference, providing a flexible and robust framework for parameter estimation across a wide range of models. Its widespread application in both theoretical and applied statistics underscores its fundamental role in the analysis of probabilistic models.
+
 \subsection{Maximizing the Likelihood of the Data}
+
+Maximizing the likelihood of the data is a fundamental goal in many statistical models and machine learning algorithms. This process involves adjusting the model parameters to make the observed data as probable as possible under the model.
+
+\subsubsection{Objective of Maximization}
+The primary objective of maximizing the likelihood is to find the parameter set \( \theta \) that makes the observed data most probable. This approach is rooted in the principle that the best model for the data is the one under which the data is most likely to occur.
+
+\subsubsection{The Likelihood Function}
+The likelihood function \( L(\theta \mid X) \), representing the probability of observing the data \( X \) given parameters \( \theta \), serves as the cornerstone for this maximization process. The function is often expressed as:
+\[
+L(\theta \mid X) = \prod_{i=1}^n f(x_i \mid \theta)
+\]
+where \( f(x_i \mid \theta) \) is the probability density or mass function, and \( n \) is the number of data points. This product can be cumbersome to work with due to numerical underflow or computational inefficiencies, particularly with large datasets.
+
+\subsubsection{Use of Log-Likelihood}
+To address these challenges, the log-likelihood function is used:
+\[
+\log L(\theta \mid X) = \sum_{i=1}^n \log f(x_i \mid \theta)
+\]
+Maximizing this sum is mathematically equivalent to maximizing the product of the original likelihood but is computationally more stable and easier to handle, especially when differentiating with respect to \( \theta \).
+
+\subsubsection{Optimization Techniques}
+Various optimization techniques can be employed to maximize the log-likelihood, depending on the complexity of the function and the model:
+\begin{itemize}
+    \item \textbf{Gradient Descent:} Used for models where the gradient of the log-likelihood can be computed, allowing iterative improvement of the parameter estimates.
+    \item \textbf{Newton-Raphson:} A more sophisticated method that uses both the first and second derivatives of the log-likelihood to update the parameters, which can converge faster than gradient descent.
+    \item \textbf{Expectation-Maximization (EM):} For models with latent variables, the EM algorithm can be used to iteratively estimate the hidden variables and maximize the likelihood.
+\end{itemize}
+
+\subsubsection{Challenges in Maximization}
+While the maximization of the likelihood is conceptually straightforward, several challenges can arise:
+\begin{itemize}
+    \item \textbf{Multiple Local Maxima:} The likelihood function may have multiple peaks, especially in complex models, making it difficult to find the global maximum.
+    \item \textbf{Overfitting:} Maximizing the likelihood without regularization can lead to overfitting, where the model describes random error or noise instead of the underlying relationship.
+    \item \textbf{Computational Complexity:} For large datasets or complex models, the computation of the likelihood and its derivatives can be computationally intensive.
+\end{itemize}
+
+In summary, maximizing the likelihood of the data is a powerful strategy in statistical modeling and machine learning. It involves sophisticated mathematical and computational techniques to refine model parameters, ensuring that the model accurately captures the patterns in the observed data.
+
 \subsection{Compressing the Data Set}
 \subsection{Predictions on Unseen Data}
