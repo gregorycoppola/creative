@@ -128,4 +128,33 @@ The automatic discovery process must balance accuracy with computational feasibi
 
 In summary, the automatic discovery of the structure of Bayesian networks is a complex but valuable process that helps in understanding the underlying probabilistic models in various domains. Advances in computational techniques and algorithms continue to improve the efficacy and efficiency of this process, making it a vital tool in data-driven decision-making.
 
-\subsection{Compared to Neural Networks}
+\subsection{Model Structure in Neural Networks vs. Bayesian Networks}
+
+Understanding the structural learning differences between neural networks and Bayesian networks is crucial for selecting the appropriate modeling approach based on the nature of the problem and the data available.
+
+\subsubsection{Neural Networks: Fixed Structure Learning}
+Neural networks are characterized by a predefined architecture, which includes the number of layers, the number of neurons in each layer, and the connection patterns between the neurons (e.g., fully connected, convolutional). The learning process in neural networks involves adjusting the weights of the connections through training, typically using backpropagation and gradient descent methods. This fixed structure implies that the model's capacity and its ability to capture complex patterns are determined before training begins.
+
+\textbf{Key Characteristics:}
+\begin{itemize}
+    \item \textbf{Architecture Selection:} The structure or topology of a neural network is usually decided based on the specific application and is often guided by empirical performance metrics, prior knowledge, or experimentation.
+    \item \textbf{Parameter Optimization:} Once the architecture is set, learning focuses solely on optimizing the weights of the connections to minimize a loss function, which measures the difference between the predicted and actual outputs.
+\end{itemize}
+
+\subsubsection{Bayesian Networks: Structure and Parameter Learning}
+Unlike neural networks, Bayesian networks require learning both the parameters and the structure from data unless the structure is predefined based on domain knowledge. The structure of a Bayesian network represents conditional dependencies between variables, which needs to be determined from the data if not known a priori. This dual learning requirement makes Bayesian networks particularly suited for exploratory analysis where the relationships among variables are not fully understood.
+
+\textbf{Key Challenges:}
+\begin{itemize}
+    \item \textbf{Structural Discovery:} The process of learning the structure involves determining which nodes (variables) are directly connected and in which direction. This can be computationally intensive, as it involves evaluating the fit of numerous possible graphs.
+    \item \textbf{Parameter Estimation:} Once the structure is determined, the next step is to estimate the conditional probability tables (CPTs) for each node given its parents, which quantify the relationships encoded by the structure.
+\end{itemize}
+
+\subsubsection{Comparative Analysis}
+The necessity to determine structure in Bayesian networks adds a layer of complexity not present in neural networks, where the focus is primarily on parameter optimization. This fundamental difference stems from the purposes these models serve:
+\begin{itemize}
+    \item \textbf{Neural Networks:} Optimized for prediction and performance, particularly in scenarios where large volumes of data are available.
+    \item \textbf{Bayesian Networks:} Best suited for inference and understanding the underlying probabilistic relationships between variables, especially useful in domains where interpretability and the quality of uncertainty estimates are important.
+\end{itemize}
+
+In summary, the approach to model structure significantly impacts the application and effectiveness of neural networks and Bayesian networks. While neural networks excel in handling complex, high-dimensional data for predictive tasks, Bayesian networks offer advantages in reasoning about the probabilistic interactions and causal relationships among variables, provided their structure can be accurately learned from the data.
