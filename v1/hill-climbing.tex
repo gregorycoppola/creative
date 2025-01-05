@@ -1,6 +1,13 @@
 \section{Hill-Climbing on an Objective Function}
 
 \subsection{Objective Functions}
+Objective functions are mathematical models that measure the performance or output of a system based on a set of input variables. In optimization, the objective function is what we aim to maximize or minimize. For instance, in machine learning, an objective function can be used to evaluate the accuracy of a model or the error between the predicted and actual values.
+
 \subsection{Optimization of An Objective Function}
+Optimization involves finding the best solution from a set of feasible solutions. Hill-climbing is a simple heuristic used in optimization that iteratively moves towards a higher value of the objective function. It starts from an arbitrary point and makes local changes that increase the objective function's value. This technique is particularly useful when the search space is large, and finding the absolute maximum (or minimum) is computationally infeasible.
+
 \subsection{Expectation Maximization}
+Expectation Maximization (EM) is a statistical technique for finding maximum likelihood estimates in models with latent variables. It alternates between performing an expectation (E) step, which computes an expectation of the likelihood by including the latent variables as if they were observed, and a maximization (M) step, which computes the maximum likelihood estimates with the expected values obtained in the E step. This process iterates until convergence. EM can be thought of as hill-climbing because each iteration aims to increase the likelihood function.
+
 \subsection{The Crucial Role of the Objective Function}
+The objective function is crucial in any optimization problem because it defines the goal of the optimization. In hill-climbing, the choice of objective function significantly impacts the effectiveness and efficiency of the search. A poorly chosen objective function might lead the algorithm to converge to local optima rather than the global optimum, especially in complex landscapes. Therefore, the design of the objective function must align closely with the ultimate goals of the optimization process.
