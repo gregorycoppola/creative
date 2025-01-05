@@ -1,5 +1,46 @@
 \section{Principal Operations in a Bayesian Network}
 
+\subsection{Introduction}
+\subsubsection{Definition}
+A Bayesian network for a set of variables $X_1, X_2, \ldots, X_n$ consists of:
+\begin{itemize}
+    \item A set of nodes, each representing a variable $X_i$.
+    \item A set of directed edges that connect pairs of nodes, representing conditional dependencies.
+\end{itemize}
+The key property of Bayesian networks is that each variable is conditionally independent of its non-descendants given its parent nodes in the graph.
+
+\subsubsection{Calculating the Joint Probability Distribution}
+The joint probability distribution of the variables in a Bayesian network is given by the product of conditional probabilities for each variable, conditioned on its parents in the network. Mathematically, it is expressed as:
+\[
+P(X_1, X_2, \ldots, X_n) = \prod_{i=1}^n P(X_i \mid \text{Parents}(X_i))
+\]
+where $\text{Parents}(X_i)$ denotes the set of parent nodes of $X_i$ in the network.
+
+\subsubsection{Steps to Compute the Joint Distribution}
+\begin{enumerate}
+    \item \textbf{Identify the Parents}: For each variable $X_i$, identify its parents in the Bayesian network. If $X_i$ has no parents, the conditional probability reduces to the marginal probability of $X_i$.
+    \item \textbf{Determine Conditional Probabilities}: Utilize the conditional probability tables (CPTs) provided with the Bayesian network. These tables specify the probability of each variable for every combination of values of its parents.
+    \item \textbf{Compute the Product}: For a particular instantiation of all variables $x_1, x_2, \ldots, x_n$, compute the product of the conditional probabilities from the CPTs. This product gives the probability of that particular instantiation.
+\end{enumerate}
+
+\subsubsection{Example}
+Consider a simple Bayesian network with three variables: $A$, $B$, and $C$, where $A$ causes $B$ and $B$ causes $C$ (i.e., $A \rightarrow B \rightarrow C$).
+
+The joint distribution is calculated as:
+\[
+P(A, B, C) = P(C \mid B) \cdot P(B \mid A) \cdot P(A)
+\]
+If you know that:
+\begin{itemize}
+    \item $P(A = a_1) = 0.3$,
+    \item $P(B = b_1 \mid A = a_1) = 0.5$,
+    \item $P(C = c_1 \mid B = b_1) = 0.4$,
+\end{itemize}
+Then:
+\[
+P(A = a_1, B = b_1, C = c_1) = 0.4 \cdot 0.5 \cdot 0.3 = 0.06
+\]
+
 \subsection{Inference}
 \subsection{Parameter learning}
 \subsection{Structure Discovery}
