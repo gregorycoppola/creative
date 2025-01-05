@@ -96,5 +96,36 @@ Bayesian parameter learning is widely used in fields where the stakes of decisio
 
 In summary, Bayesian parameter learning offers a robust framework for understanding uncertainty in parameter estimates and making informed decisions based on both prior knowledge and new data. The flexibility in choosing prior models and the richness of the posterior analysis are key advantages of this approach over more traditional methods.
 
-\subsection{Structure Discovery}
+\subsection{Automatic Discovery of the Structure of a Bayesian Network}
+Automatic discovery of the structure of a Bayesian network involves determining the most probable graphical model that represents the dependencies among a set of variables based on observed data. This task is crucial in many applications where the underlying dependency structure is not known a priori and must be inferred from data.
+
+\subsubsection{The Challenge}
+The primary challenge in learning the structure of a Bayesian network from data is that the number of possible structures grows super-exponentially with the number of variables. Hence, finding the optimal network structure is computationally intensive and often NP-hard.
+
+\subsubsection{Scoring Functions}
+To evaluate how well a particular structure fits the data, various scoring functions are used. These include:
+\begin{itemize}
+    \item \textbf{Bayesian Information Criterion (BIC)}: Balances model complexity against the model's goodness of fit.
+    \item \textbf{Akaike Information Criterion (AIC)}: Similar to BIC but with a different penalty for the number of parameters.
+    \item \textbf{Bayesian Dirichlet equivalent (BDeu)}: A Bayesian score that incorporates prior beliefs about the network structure.
+\end{itemize}
+The goal is to maximize these scores over all possible structures, which indirectly maximizes the likelihood of the data given the structures.
+
+\subsubsection{Search Algorithms}
+Due to the vast number of potential network structures, heuristic search methods are employed to explore the space:
+\begin{itemize}
+    \item \textbf{Greedy Search}: Starts with an empty graph or a random structure and iteratively adds, removes, or reverses edges to improve the scoring function.
+    \item \textbf{Hill Climbing}: A variant of greedy search that makes local changes to the structure and accepts changes that improve the scoring.
+    \item \textbf{Tabu Search}: Enhances greedy algorithms by avoiding cycles in the search space, using a tabu list that prevents revisiting recent configurations.
+    \item \textbf{Genetic Algorithms}: Use principles of evolution to explore various structures through operations like mutation and crossover based on their fitness.
+\end{itemize}
+
+\subsubsection{Constraints and Priors}
+Incorporating domain-specific knowledge as constraints or priors can significantly reduce the search space and improve the learning efficiency. Constraints can specify which variables are more likely to be parents of others, whereas priors can influence the initial probabilities of certain network configurations.
+
+\subsubsection{Challenges and Considerations}
+The automatic discovery process must balance accuracy with computational feasibility. While more complex models may better fit the data, they are also more prone to overfitting and can be computationally prohibitive. Moreover, the choice of scoring function and search algorithm can greatly affect the quality of the discovered structure.
+
+In summary, the automatic discovery of the structure of Bayesian networks is a complex but valuable process that helps in understanding the underlying probabilistic models in various domains. Advances in computational techniques and algorithms continue to improve the efficacy and efficiency of this process, making it a vital tool in data-driven decision-making.
+
 \subsection{Compared to Neural Networks}
