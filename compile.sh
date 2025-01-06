@@ -33,5 +33,7 @@ bibtex main.aux
 pdflatex main.tex
 pdflatex main.tex
 
+cp main.pdf ../coppola-creativity-working-2025.pdf
+
 echo "Document compilation successful."
 
